@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Boletos para Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .event {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .event-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .event-date {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .event-description {
+            margin-bottom: 20px;
+        }
+        .buy-tickets {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eventos Disponibles</h1>
+
+    <div class="event">
+        <div class="event-title">Evento 1</div>
+        <div class="event-date">25 de junio, 2024</div>
+        <div class="event-description">Evento especial 1</div>
+        <div class="buy-tickets">
+            <form action="/comprar-boletos" method="post">
+                <label for="rock-tickets">Cantidad de boletos:</label>
+                <input type="number" id="rock-tickets" name="rock-tickets" min="1" required>
+                <button type="submit">Comprar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="event">
+        <div class="event-title">Evento 2</div>
+        <div class="event-date">12 de julio, 2024</div>
+        <div class="event-description">Evento especial 2</div>
+        <div class="buy-tickets">
+            <form action="/comprar-boletos" method="post">
+                <label for="food-tickets">Cantidad de boletos:</label>
+                <input type="number" id="food-tickets" name="food-tickets" min="1" required>
+                <button type="submit">Comprar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="event">
+        <div class="event-title">Evento 3</div>
+        <div class="event-date">30 de agosto, 2024</div>
+        <div class="event-description">Evento especial 3</div>
+        <div class="buy-tickets">
+            <form action="/comprar-boletos" method="post">
+                <label for="theater-tickets">Cantidad de boletos:</label>
+                <input type="number" id="theater-tickets" name="theater-tickets" min="1" required>
+                <button type="submit">Comprar</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
