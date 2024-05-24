@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .event-list, .event-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+        .event-list button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .event-list button:hover {
+            background: #0056b3;
+        }
+        .event-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .event-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .event-form button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .event-form button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Eventos</h1>
+
+    <div class="event-list">
+        <h2>Selecciona un evento para editar</h2>
+        <button onclick="loadEvent('Evento 1', '2024-05-20', '10:00', 'imagen1.jpg')">Evento 1</button>
+        <button onclick="loadEvent('Evento 2', '2024-06-15', '14:00', 'imagen2.jpg')">Evento 2</button>
+        <button onclick="loadEvent('Evento 3', '2024-07-10', '09:00', 'imagen3.jpg')">Evento 3</button>
+        <button onclick="loadEvent('Evento 4', '2024-08-25', '16:00', 'imagen4.jpg')">Evento 4</button>
+    </div>
+
+    <div class="event-form">
+        <h2>Editar Evento</h2>
+        <form id="editEventForm">
+            <label for="eventName">Nombre del Evento:</label>
+            <input type="text" id="eventName" name="eventName">
+
+            <label for="eventDate">Fecha:</label>
+            <input type="date" id="eventDate" name="eventDate">
+
+            <label for="eventTime">Horario:</label>
+            <input type="time" id="eventTime" name="eventTime">
+
+            <label for="eventImage">Imagen:</label>
+            <input type="text" id="eventImage" name="eventImage">
+
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script>
+        function loadEvent(name, date, time, image) {
+            document.querySelector('.event-form').style.display = 'block';
+            document.getElementById('eventName').value = name;
+            document.getElementById('eventDate').value = date;
+            document.getElementById('eventTime').value = time;
+            document.getElementById('eventImage').value = image;
+        }
+
+        document.getElementById('editEventForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Evento guardado: ' + 
+                '\nNombre: ' + document.getElementById('eventName').value +
+                '\nFecha: ' + document.getElementById('eventDate').value +
+                '\nHorario: ' + document.getElementById('eventTime').value +
+                '\nImagen: ' + document.getElementById('eventImage').value
+            );
+        });
+    </script>
+</body>
+</html>
+
+
+
+
