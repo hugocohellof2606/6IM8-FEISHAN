@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecle su FanID</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        input, select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        .success-message {
+            color: #008000;
+            margin-top: 10px;
+        }
+        .tickets {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pago de Eventos</h1>
+
+        <form id="paymentForm">
+            <div class="fan-id">
+                <label for="fanID">Fan ID:</label><br>
+                <input type="text" id="fanID" name="fanID" placeholder="Ej. Eduardo1, Omar2, Hugo3"><br>
+                <span id="fanIDError" class="error-message"></span>
+            </div>
+
+            <button type="button" onclick="validateFanID()">Click</button>
+        </form>
+
+        <div id="message" class="success-message" style="display: none;"></div>
+
+        <div id="tickets" class="tickets" style="display: none;">
+            <strong>Boletos:</strong>
+            <ul id="ticketList"></ul>
+        </div>
+    </div>
+    
+    <script>
+        const ticketsData = {
+            'Eduardo1': [1, 3],
+            'Omar2': [1, 4],
+            'Hugo3': [2, 4]
+        };
+
+        function validateFanID() {
+            const fanID = document.getElementById('fanID').value;
+            const fanIDError = document.getElementById('fanIDError');
+            const message = document.getElementById('message');
+            const ticketsDiv = document.getElementById('tickets');
+            const ticketList = document.getElementById('ticketList');
+
+            // Verificar si el fanID es válido y contiene los boletos adecuados
+            if (ticketsData[fanID]) {
+                fanIDError.textContent = ''; // Limpiar el mensaje de error
+                message.textContent = 'El Fan ID es válido y tiene los boletos correctos.';
+                message.style.display = 'block'; // Mostrar el mensaje de éxito
+
+                // Mostrar los boletos
+                ticketList.innerHTML = '';
+                ticketsData[fanID].forEach(ticket => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = 'Evento ' + ticket;
+                    ticketList.appendChild(listItem);
+                });
+
+                ticketsDiv.style.display = 'block'; // Mostrar la lista de boletos
+            } else {
+                fanIDError.textContent = 'El Fan ID no es válido o no tiene los boletos correctos. Por favor, ingresa uno válido.';
+                message.style.display = 'none'; // Ocultar el mensaje de éxito si hubiera
+                ticketsDiv.style.display = 'none'; // Ocultar la lista de boletos si hubiera
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
