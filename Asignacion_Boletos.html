@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Zona y Asientos para Evento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .venue {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .zone-select {
+            margin-bottom: 20px;
+        }
+        select, input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .zone-image {
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seleccionar Zona y Asientos para Evento</h1>
+
+    <div class="venue">
+        <h2>Lugar del Evento: Estadio XYZ</h2>
+        <div class="zone-select">
+            <label for="zone">Selecciona la Zona:</label><br>
+            <select id="zone">
+                <option value="vip">VIP</option>
+                <option value="oro">Oro</option>
+                <option value="general_a">General A</option>
+                <option value="general_b">General B</option>
+            </select>
+        </div>
+        <div class="seat-select">
+            <label for="seats">Número de Asientos:</label><br>
+            <input type="number" id="seats" name="seats" min="1" value="1"><br>
+        </div>
+        <button onclick="calculatePrice()">Calcular Precio</button>
+        <div id="priceDisplay"></div>
+        <img src="https://api.eticket.com.mx/v2/structures/mappingImage/26612" alt="Mapa del lugar con las zonas" class="zone-image">
+    </div>
+
+    <script>
+        function calculatePrice() {
+            const zone = document.getElementById('zone').value;
+            const seats = parseInt(document.getElementById('seats').value);
+
+            let price = 0;
+
+            switch (zone) {
+                case 'vip':
+                    price = 100;
+                    break;
+                case 'oro':
+                    price = 75;
+                    break;
+                case 'general_a':
+                    price = 50;
+                    break;
+                case 'general_b':
+                    price = 30;
+                    break;
+                default:
+                    break;
+            }
+
+            const totalPrice = price * seats;
+
+            document.getElementById('priceDisplay').innerHTML = `<p>El precio total para ${seats} asientos en la zona ${zone.toUpperCase()} es: $${totalPrice}</p>`;
+        }
+    </script>
+</body>
+</html>
+
