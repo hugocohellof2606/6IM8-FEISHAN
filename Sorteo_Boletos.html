@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo de Boletos para Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .event-list, .result-message {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .event-list button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .event-list button:hover {
+            background: #0056b3;
+        }
+        .result-message {
+            display: none;
+        }
+        .result-message.success {
+            color: #28a745;
+        }
+        .result-message.failure {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sorteo de Boletos para Eventos</h1>
+
+    <div class="event-list">
+        <h2>Selecciona un evento para participar en el sorteo</h2>
+        <button onclick="participateInRaffle('Evento 1')">Evento 1</button>
+        <button onclick="participateInRaffle('Evento 2')">Evento 2</button>
+        <button onclick="participateInRaffle('Evento 3')">Evento 3</button>
+        <button onclick="participateInRaffle('Evento 4')">Evento 4</button>
+    </div>
+
+    <div class="result-message" id="resultMessage">
+        <h2 id="resultText"></h2>
+    </div>
+
+    <script>
+        function participateInRaffle(eventName) {
+            const resultMessage = document.getElementById('resultMessage');
+            const resultText = document.getElementById('resultText');
+            
+            // Realizar sorteo aleatorio (50% de probabilidad)
+            const win = Math.random() < 0.5;
+
+            // Mostrar resultado del sorteo
+            if (win) {
+                resultText.textContent = `¡Felicidades! Has ganado la posibilidad de comprar un boleto para ${eventName}.`;
+                resultMessage.className = 'result-message success';
+            } else {
+                resultText.textContent = `Lo siento, no has ganado la posibilidad de comprar un boleto para ${eventName}.`;
+                resultMessage.className = 'result-message failure';
+            }
+
+            resultMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
